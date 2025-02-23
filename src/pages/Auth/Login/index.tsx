@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './components/LoginComponent.css';
 import { Alert, Button, Snackbar } from '@mui/material';
+import { useAuth } from '../../../context/AuthentificationContext';
 
 
 
@@ -13,23 +14,23 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const handleSubmit = async (event) => {
+    const {login} = useAuth()
+
+    useEffect(()=>{
+       const response= localStorage.getItem("accessToken")
+       if(response)
+       {
+        navigate("/Home")
+       }
+    },[])
+
+    const handleSubmit = async (event:any) => {
         event.preventDefault();
         console.log('Login Details:', { email, password });
 
         try {
-            const response = await axios.post('https://localhost:7000/Login', { email, password });
-            console.log('response', response.data);
-
-            localStorage.setItem('accessToken', response.data.accessToken);
-            localStorage.setItem('refreshToken', response.data.refreshToken);
-            if (response.data.statusCode === 200) {
-                navigate('/Home');
-            } else {
-                setMessages(response.data.message);
-                setOpen(true);
-
-            }
+           await login(email,password)
+           navigate("/Home")
         }
         catch (error) {
             console.error('Login failed:', error);

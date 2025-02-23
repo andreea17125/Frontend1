@@ -7,6 +7,16 @@ import PersonalDataRequest from './PersonalDataRequest';
 import LocationDataRequest from './LocationDataRequest';
 
 const Register = () => {
+
+    const navigate = useNavigate()
+    useEffect(()=>{
+
+        const access = localStorage.getItem("accessToken")
+        if(access)
+        {
+            navigate("/Home")
+        }
+    },[])
     const [formData, setFormData] = useState(
         {
             email: "",
@@ -33,7 +43,6 @@ const Register = () => {
     };
 
     const [step, setStep] = useState(1);
-    const navigate = useNavigate();
 
     const handleChange = (name:string,value:string|number) => {
         setFormData((prev) => ({
