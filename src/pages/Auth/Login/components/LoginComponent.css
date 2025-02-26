@@ -146,4 +146,19 @@
   .signup-text a:hover {
     text-decoration: underline;
   }
+  .title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px; 
+    position: relative;
+  }
+  
+  
+  
+  .app-logo {
+    width: 70px; 
+    height: auto;
+    transform: translateY(-5px);
+  }
   

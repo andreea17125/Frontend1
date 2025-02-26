@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 20px; /* Ridicat conținutul mai sus */
+    padding-top: 20px;
   }
   
   .ellipse-top {
@@ -40,7 +40,7 @@
     position: relative;
     width: 100%;
     max-width: 414px;
-    padding: 18px 20px; /* Ajustat padding-ul */
+    padding: 18px 20px; 
     z-index: 1;
     box-sizing: border-box;
     text-align: center;
@@ -53,11 +53,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    margin-bottom: 25px; /* Ridicat mai sus */
+    margin-bottom: 25px; 
   }
   
   .form-group {
-    margin-bottom: 20px; /* Mai puțin spațiu între câmpuri */
+    margin-bottom: 20px; 
     text-align: left;
   }
   
@@ -67,7 +67,7 @@
     font-weight: 700;
     font-size: 14px;
     color: #ffffff;
-    margin-bottom: 6px; /* Ușor mai compact */
+    margin-bottom: 6px; 
   }
   
   .form-group input {
@@ -91,7 +91,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 12px; /* Ridicat mai sus */
+    margin-bottom: 12px; 
   }
   
   .terms-container input[type="checkbox"] {
@@ -205,7 +205,7 @@
     font-weight: 400;
     font-size: 16px;
     color: #103d78;
-    margin-top: 25px; /* Ridicat mai sus */
+    margin-top: 25px; 
   }
   
   .signup-text a {

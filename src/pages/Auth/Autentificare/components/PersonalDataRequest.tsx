@@ -39,62 +39,60 @@ const PersonalDataRequest = ({ handleChange }) => {
 
   return (
     <div className="form-container">
-      <form>
-        <div className="form-group">
-          <label>Email</label>
-          <div className="input-container">
-            <Mail className="icon" />
-            <input onChange={(e) => handleChange("email", e.target.value)} type="email" placeholder="Input your email" />
-          </div>
-        </div>
+    <div className="form-group">
+      <label>Email</label>
+      <div className="input-container">
+        <Mail className="icon" />
+        <input onChange={(e) => handleChange("email", e.target.value)} type="email" placeholder="Input your email" />
+      </div>
+    </div>
 
-        <div className="form-group">
-          <label>Username</label>
-          <div className="input-container">
-            <User className="icon" />
-            <input onChange={(e) => handleChange("username", e.target.value)} type="text" placeholder="Input your username" />
-          </div>
-        </div>
+    <div className="form-group">
+      <label>Username</label>
+      <div className="input-container">
+        <User className="icon" />
+        <input onChange={(e) => handleChange("username", e.target.value)} type="text" placeholder="Input your username" />
+      </div>
+    </div>
 
-        <div className="form-group" ref={dropdownRef} style={{ position: "relative" }}>
-          <label>Role</label>
-          <div className="input-container" onClick={() => setOpen(!open)}>
-            <Briefcase className="icon" />
-            <input type="text" value={selectedRole} readOnly placeholder="Select your role" />
-          </div>
-          {open && (
-            <div className="dropdown-menu">
-              {roles.length > 0 ? (
-                roles.map((role, index) => (
-                  <div key={index} className="dropdown-item" onClick={() => handleRoleChange(role.name)}>
-                    {role.name}
-                  </div>
-                ))
-              ) : (
-                <div className="dropdown-item disabled">No roles available</div>
-              )}
-            </div>
+    <div className="form-group" ref={dropdownRef} style={{ position: "relative" }}>
+      <label>Role</label>
+      <div className="input-container" onClick={() => setOpen(!open)}>
+        <Briefcase className="icon" />
+        <input type="text" value={selectedRole} readOnly placeholder="Select your role" />
+      </div>
+      {open && (
+        <div className="dropdown-menu">
+          {roles.length > 0 ? (
+            roles.map((role, index) => (
+              <div key={index} className="dropdown-item" onClick={() => handleRoleChange(role.name)}>
+                {role.name}
+              </div>
+            ))
+          ) : (
+            <div className="dropdown-item disabled">No roles available</div>
           )}
         </div>
-
-        <div className="form-group">
-          <label>Password</label>
-          <div className="input-container">
-            <Lock className="icon" />
-            <input onChange={(e) => handleChange("password", e.target.value)} type="password" placeholder="********" />
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label>Confirm Password</label>
-          <div className="input-container">
-            <Lock className="icon" />
-            <input onChange={(e) => handleChange("confirmpassword", e.target.value)} type="password" placeholder="********" />
-          </div>
-        </div>
-      </form>
+      )}
     </div>
-  );
+
+    <div className="form-group">
+      <label>Password</label>
+      <div className="input-container">
+        <Lock className="icon" />
+        <input onChange={(e) => handleChange("password", e.target.value)} type="password" placeholder="********" />
+      </div>
+    </div>
+
+    <div className="form-group">
+      <label>Confirm Password</label>
+      <div className="input-container">
+        <Lock className="icon" />
+        <input onChange={(e) => handleChange("confirmpassword", e.target.value)} type="password" placeholder="********" />
+      </div>
+    </div>
+  </div>
+);
 };
 
 export default PersonalDataRequest;

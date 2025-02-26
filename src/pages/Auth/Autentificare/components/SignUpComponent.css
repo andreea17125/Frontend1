@@ -13,7 +13,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 20px; /* Ridicat conținutul mai sus */
+  padding-top: 20px; 
 }
 
 .ellipse-top {
@@ -40,7 +40,7 @@
   position: relative;
   width: 100%;
   max-width: 414px;
-  padding: 18px 20px; /* Ajustat padding-ul */
+  padding: 18px 20px; 
   z-index: 1;
   box-sizing: border-box;
   text-align: center;
@@ -53,11 +53,11 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-bottom: 25px; /* Ridicat mai sus */
+  margin-bottom: 25px; 
 }
 
 .form-group {
-  margin-bottom: 20px; /* Mai puțin spațiu între câmpuri */
+  margin-bottom: 20px; 
   text-align: left;
 }
 
@@ -67,7 +67,7 @@
   font-weight: 700;
   font-size: 14px;
   color: #ffffff;
-  margin-bottom: 6px; /* Ușor mai compact */
+  margin-bottom: 6px; 
 }
 
 .form-group input {
@@ -91,7 +91,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px; /* Ridicat mai sus */
+  margin-bottom: 12px; 
 }
 
 .terms-container input[type="checkbox"] {
@@ -121,7 +121,7 @@
   font-size: 25px;
   cursor: pointer;
   display: block;
-  margin: 25px auto; /* Mai aproape de câmpuri */
+  margin: 25px auto; 
   padding: 10px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
@@ -222,7 +222,7 @@
   font-weight: 400;
   font-size: 16px;
   color: #103d78;
-  margin-top: 25px; /* Ridicat mai sus */
+  margin-top: 25px; 
 }
 
 .signup-text a {
@@ -235,5 +235,136 @@
 .signup-text a:hover {
   color: #103d78;
   text-shadow: 0px 0px 8px rgba(106, 179, 150, 0.5);
+
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 14px;
+  box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  z-index: 10;
+  animation: fadeIn 0.3s ease-in-out;
+  transform: translateY(8px);
+  max-height: 220px;
+  overflow-y: auto;
+  backdrop-filter: blur(12px); 
+  border: 2px solid rgba(106, 179, 150, 0.6); 
+}
+
+
+.dropdown-item {
+  padding: 14px 18px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #5fa387;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(106, 179, 150, 0.3); 
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+
+.dropdown-item:hover {
+  background: linear-gradient(90deg, #5fa387, #6AB396);
+  color: white;
+  transform: translateX(6px);
+  border-radius: 8px;
+}
+
+
+.dropdown-item:active {
+  background: #4e8c76;
+  transform: scale(0.98);
+}
+
+
+.dropdown-item.disabled {
+  color: #999999;
+  cursor: not-allowed;
+  background: transparent;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 22px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  height: 50px;
+  border: 2px solid rgba(106, 179, 150, 0.6);
+}
+
+.input-container:hover {
+  box-shadow: 0 0 10px rgba(106, 179, 150, 0.7);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.input-container input {
+  border: none;
+  background: transparent;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  color: #595959;
+  cursor: pointer;
+  height: 100%;
+  flex-grow: 1;
+}
+
+.input-container input:focus {
+  outline: none;
+  box-shadow: 0 0 6px rgba(106, 179, 150, 0.5);
+}
+
+
+.dropdown-role {
+  font-size: 14px;
+  font-weight: bold;
+  color: #4e8c76;
+  padding: 10px 18px;
+  background: rgba(106, 179, 150, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  border-bottom: 2px solid rgba(106, 179, 150, 0.5);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(8px);
+  }
+}
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+  position: relative;
+}
+
+
+
+.app-logo {
+  width: 70px; 
+  height: auto;
+  transform: translateY(-5px); 
 
 }
