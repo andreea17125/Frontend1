@@ -58,9 +58,8 @@ const LocationDataRequest = ({ handleLocationChange }) => {
       console.log("Cities API response:", response.data);
 
       if (response.data?.cities && Array.isArray(response.data.cities)) {
-        const cityNames = response.data.cities.map((city) => city.name);
-        setCities(cityNames);
-        setFilteredCities(cityNames);
+        setCities(response.data.cities);
+        setFilteredCities(response.data.cities);
       } else {
         setCities([]);
         setFilteredCities([]);

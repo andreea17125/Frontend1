@@ -5,6 +5,7 @@ import './components/LoginComponent.css';
 import { Alert, Snackbar } from '@mui/material';
 import logo from '../Login/components/logoo.png'; 
 
+
 const Login = () => {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState('');
@@ -19,10 +20,10 @@ const Login = () => {
         try {
             const response = await axios.post('https://localhost:7000/Login', { email, password });
             console.log('response', response.data);
-
+           
             localStorage.setItem('accessToken', response.data.accessToken);
             localStorage.setItem('refreshToken', response.data.refreshToken);
-            if (response.data.statusCode === 200) {
+            if (response.data.status === 200) {
                 navigate('/Home');
             } else {
                 setMessages(response.data.message);

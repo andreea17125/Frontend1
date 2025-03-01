@@ -6,6 +6,7 @@ import './App.css'
 import Authentification from './pages/Auth/Autentificare';
 import Home from './pages/Auth/Home/components';
 import Login from './pages/Auth/Login';
+import AdminHome from './pages/AdminHome';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,9 +16,9 @@ function App() {
 
     <Routes>
       <Route path="/" element={<Authentification/>} />
-      <Route path="/Home" element={<Home/>} />
+      <Route path="/AdminHome" element={<AdminHome/>} />
       <Route path="/Login" element={<Login/>} />
-      
+      <Route path="/CustomerHome" element={<Home/>} />
     </Routes>
     
   </Router>

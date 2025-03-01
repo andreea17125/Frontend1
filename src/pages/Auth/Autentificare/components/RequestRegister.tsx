@@ -44,7 +44,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await axios.post('https://localhost:7000/api/User/RequestRegister', formData);
-            if (response.data.statusCode === 201) {
+            if (response.data.statusCode=== 201) {
                 setSnackbar({ open: true, message: "Registration successful!", severity: "success" });
             } else {
                 setSnackbar({ open: true, message: "Registration failed!", severity: "error" });
