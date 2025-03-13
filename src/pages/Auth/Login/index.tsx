@@ -3,45 +3,32 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './components/LoginComponent.css';
 import { Alert, Snackbar } from '@mui/material';
-import logo from '../Login/components/logoo.png';
-import { useAuth } from '../../../context/LoginContext';
-import { jwtDecode } from 'jwt-decode';
+import logo from '../Login/components/logoo.png'; 
 
 
 const Login = () => {
     const [open, setOpen] = useState(false);
     const [messages, setMessages] = useState('');
     const [email, setEmail] = useState('');
-    const [snackbar, setSnackbar] = useState({ open: false, message: "", severity: "info" });
-
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-    //@ts-ignore
-    const { login } = useAuth()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('Login Details:', { email, password });
 
         try {
-
-            const token = await login(email, password)
-            var decoded:{
-                unique_name:string,
-                role:string
-            } = jwtDecode(token);
-            const user = decoded
-            if (!user) {
-                setSnackbar({ open: true, message: "Invalid credentials", severity: "danger" });
-                return;
+            const response = await axios.post('https://localhost:7000/Login', { email, password });
+            console.log('response', response.data);
+           
+            localStorage.setItem('accessToken', response.data.accessToken);
+            localStorage.setItem('refreshToken', response.data.refreshToken);
+            if (response.data.status === 200) {
+                navigate('/AdminHome/UsersRequest');
+            } else {
+                setMessages(response.data.message);
+                setOpen(true);
             }
-            if (user?.role === "admin") {
-                navigate('/AdminHome');
-            }
-            else {
-                navigate("/CustomerHome")
-            }
-
         } catch (error) {
             console.error('Login failed:', error);
         }
@@ -53,7 +40,7 @@ const Login = () => {
             <div className="background-ellipse bottom"></div>
 
             <div className="content">
-
+             
                 <div className="title-container">
                     <h1 className="app-title">TerrainApp</h1>
                     <img src={logo} alt="TerrainApp Logo" className="app-logo" />
@@ -94,9 +81,9 @@ const Login = () => {
             </div>
 
             <div className="bottom-indicator"></div>
-            <Snackbar open={snackbar.open} autoHideDuration={3000} onClose={() => setSnackbar(prev => ({ ...prev, open: false }))}>
-                <Alert onClose={() => setSnackbar(prev => ({ ...prev, open: false }))} severity={snackbar.severity}>
-                    {snackbar.message}
+            <Snackbar open={open} autoHideDuration={3000} onClose={() => setOpen(false)}>
+                <Alert onClose={() => setOpen(false)} severity={"error"}>
+                    {messages}
                 </Alert>
             </Snackbar>
         </div>

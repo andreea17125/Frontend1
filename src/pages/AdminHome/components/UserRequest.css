@@ -1,0 +1,132 @@
+.admin-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #a7d7c5;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 60px 0; 
+}
+
+.background-ellipse {
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    background-color: #84c7ae;
+    border-radius: 50%;
+}
+
+.background-ellipse.top {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    left: -500px;
+    top: -500px;
+    background: #84c7ae;
+    border-radius: 50%;
+}
+
+.background-ellipse.bottom {
+    position: absolute;
+    width: 1000px;
+    height: 1000px;
+    right: -500px;
+    bottom: -500px;
+    background: #84c7ae;
+    border-radius: 50%;
+}
+
+.admin-title {
+    font-family: 'Acme', sans-serif;
+    font-size: 36px;
+    color: #103d78;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.user-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    align-items: center;
+}
+
+.user-card {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.user-card:hover {
+    transform: scale(1.02);
+}
+
+.user-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.status {
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.status.pending {
+    background-color: #ffcc00;
+    color: white;
+}
+
+.status.approved {
+    background-color: #4caf50;
+    color: white;
+}
+
+.status.rejected {
+    background-color: #f44336;
+    color: white;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.approve-btn,
+.reject-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+}
+
+.approve-btn {
+    background: linear-gradient(90deg, #6AB396, #84C7AE);
+    color: white;
+}
+
+.reject-btn {
+    background: linear-gradient(90deg, #e57373, #d65f5f);
+    color: white;
+}
+
+.approve-btn:hover {
+    background: #5a9b86;
+    transform: scale(1.05);
+}
+
+.reject-btn:hover {
+    background: #c75454;
+    transform: scale(1.05);
+}
