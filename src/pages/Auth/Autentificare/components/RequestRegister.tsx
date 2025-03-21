@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,7 @@ const Register = () => {
         e.preventDefault();
         try {
             const response = await axios.post('https://localhost:7000/api/User/RequestRegister', formData);
-            if (response.data.statusCode=== 201) {
+            if (response.data.statusCode === 201) {
                 setSnackbar({ open: true, message: "Registration successful!", severity: "success" });
             } else {
                 setSnackbar({ open: true, message: "Registration failed!", severity: "error" });
@@ -57,7 +57,13 @@ const Register = () => {
     const handleCloseSnackbar = () => {
         setSnackbar({ ...snackbar, open: false });
     };
+    useEffect(() => {
+        const token = localStorage.getItem('accessToken');
+        if (token) {
+            navigate('/AdminHome/UsersRequest');
+        }
 
+    }, [])
     return (
         <div className="signup-container">
             <Snackbar open={snackbar.open} autoHideDuration={4000} onClose={handleCloseSnackbar}>
@@ -81,10 +87,10 @@ const Register = () => {
             <div className="ellipse-bottom"></div>
 
             <div className="content">
-               
+
                 <div className="title-container">
-                <h1 className="app-title">TerrainApp</h1>
-                <img src={logo} alt="TerrainApp Logo" className="app-logo" />
+                    <h1 className="app-title">TerrainApp</h1>
+                    <img src={logo} alt="TerrainApp Logo" className="app-logo" />
                 </div>
 
                 <form onSubmit={handleSubmit}>

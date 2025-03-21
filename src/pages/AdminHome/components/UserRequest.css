@@ -1,132 +1,133 @@
 .admin-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background-color: #a7d7c5;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 0; 
-}
-
-.background-ellipse {
-    position: absolute;
-    width: 620px;
-    height: 620px;
-    background-color: #84c7ae;
-    border-radius: 50%;
-}
-
-.background-ellipse.top {
-    position: absolute;
-    width: 1000px;
-    height: 1000px;
-    left: -500px;
-    top: -500px;
-    background: #84c7ae;
-    border-radius: 50%;
-}
-
-.background-ellipse.bottom {
-    position: absolute;
-    width: 1000px;
-    height: 1000px;
-    right: -500px;
-    bottom: -500px;
-    background: #84c7ae;
-    border-radius: 50%;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #eef2f7;
+    padding: 40px 20px;
+    font-family: 'Poppins', sans-serif;
 }
 
 .admin-title {
-    font-family: 'Acme', sans-serif;
-    font-size: 36px;
-    color: #103d78;
-    margin-bottom: 20px;
-    text-align: center;
+    font-size: 32px;
+    color: #1f2d3d;
     font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.user-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 1300px;
 }
 
 .user-list {
-    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
     align-items: center;
-}
-
-.user-card {
     background: #ffffff;
-    border-radius: 10px;
     padding: 20px;
-    width: 100%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+    min-width: 320px;
+    transition: transform 0.2s ease-in-out;
 }
 
-.user-card:hover {
+.user-list:hover {
     transform: scale(1.02);
 }
 
-.user-card p {
-    font-size: 16px;
-    margin-bottom: 10px;
+
+.pending { border-top: 6px solid #ffb300; }
+.approved { border-top: 6px solid #2e7d32; }
+.rejected { border-top: 6px solid #d32f2f; }
+
+h2 {
+    font-size: 22px;
+    color: #1f2d3d;
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-.status {
-    padding: 4px 8px;
-    border-radius: 8px;
+
+.user-card {
+    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+    max-width: 260px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-card:hover {
+    background: #e0e7ef;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.username {
+    font-size: 18px;
     font-weight: bold;
+    color: #2b3e50;
 }
 
-.status.pending {
-    background-color: #ffcc00;
-    color: white;
-}
-
-.status.approved {
-    background-color: #4caf50;
-    color: white;
-}
-
-.status.rejected {
-    background-color: #f44336;
-    color: white;
+.user-details {
+    margin-top: 8px;
+    text-align: left;
+    font-size: 14px;
+    color: #5a5a5a;
 }
 
 .actions {
-    margin-top: 10px;
     display: flex;
     justify-content: space-between;
+    margin-top: 12px;
 }
 
-.approve-btn,
-.reject-btn {
-    padding: 10px 20px;
-    border: none;
+
+button {
+    padding: 10px 18px;
     border-radius: 25px;
-    cursor: pointer;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
 
 .approve-btn {
-    background: linear-gradient(90deg, #6AB396, #84C7AE);
-    color: white;
-}
-
-.reject-btn {
-    background: linear-gradient(90deg, #e57373, #d65f5f);
+    background: #2e7d32;
     color: white;
 }
 
 .approve-btn:hover {
-    background: #5a9b86;
-    transform: scale(1.05);
+    background: #1b5e20;
+}
+
+.reject-btn {
+    background: #d32f2f;
+    color: white;
 }
 
 .reject-btn:hover {
-    background: #c75454;
-    transform: scale(1.05);
+    background: #b71c1c;
+}
+
+
+@media (max-width: 900px) {
+    .user-container {
+        flex-direction: column;
+        align-items: center;
+    }
 }

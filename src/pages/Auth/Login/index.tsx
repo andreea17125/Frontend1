@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './components/LoginComponent.css';
@@ -13,6 +13,14 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        const token = localStorage.getItem('accessToken');
+        if(token)
+        {
+            navigate('/AdminHome/UsersRequest');
+        }
+        
+        },[])
     const handleSubmit = async (event) => {
         event.preventDefault();
         console.log('Login Details:', { email, password });

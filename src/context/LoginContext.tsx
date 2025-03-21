@@ -58,7 +58,7 @@ export const CustomAuthProvider = ({ children }) => {
 
         const interval = setInterval(() => {
         getNewToken();
-        }, 14400);
+        }, 180000);
         setFirstLogin(false);
         return () => {
         clearInterval(interval);
