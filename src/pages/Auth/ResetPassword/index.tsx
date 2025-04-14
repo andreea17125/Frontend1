@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import "./resetpassword.css"; // Import the CSS file
+import "./resetpassword.css"; 
 
 const ResetPassword = () => {
     const [valid, setValid] = useState<boolean>(false);

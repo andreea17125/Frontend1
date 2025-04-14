@@ -57,8 +57,11 @@
 }
 
 .form-group {
-  margin-bottom: 20px; 
+  margin-bottom: 0px; 
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .form-group label {
@@ -67,7 +70,13 @@
   font-weight: 700;
   font-size: 14px;
   color: #ffffff;
-  margin-bottom: 6px; 
+  margin-bottom: 0px; 
+  text-align: left;
+  width: 100%;
+  padding-left: 5px;
+  line-height: 1;
+  transform: translateY(2px);
+  margin-bottom: -2px;
 }
 
 .form-group input {
@@ -91,7 +100,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px; 
+  margin-bottom: 8px; 
 }
 
 .terms-container input[type="checkbox"] {
@@ -111,7 +120,7 @@
 .signup-button {
   width: 60%;
   max-width: 200px;
-  height: 50px;
+  height: 45px;
   background: linear-gradient(90deg, #6AB396, #84C7AE);
   border-radius: 30px;
   border: none;
@@ -121,7 +130,7 @@
   font-size: 25px;
   cursor: pointer;
   display: block;
-  margin: 25px auto; 
+  margin: 20px auto; 
   padding: 10px 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease-in-out;
@@ -137,7 +146,7 @@
   font-weight: 400;
   font-size: 12px;
   color: #000000;
-  margin-top: 10px; 
+  margin-top: 8px; 
 }
 
 .login-link a {
@@ -193,6 +202,8 @@
   background: rgba(255, 255, 255, 0.56);
   border-radius: 20px;
   padding: 0 15px;
+  margin: 0 auto;
+  height: 45px;
 }
 
 .input-container .icon {
@@ -245,21 +256,20 @@
   background: rgba(255, 255, 255, 0.95);
   border-radius: 14px;
   box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
   z-index: 10;
   animation: fadeIn 0.3s ease-in-out;
   transform: translateY(8px);
-  max-height: 220px;
-  overflow-y: auto;
+  overflow: hidden;
   backdrop-filter: blur(12px); 
   border: 2px solid rgba(106, 179, 150, 0.6); 
+  display: flex;
+  flex-direction: column;
 }
 
-
 .dropdown-item {
-  padding: 14px 18px;
+  padding: 10px 18px;
   font-family: 'Roboto', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   color: #5fa387;
   cursor: pointer;
   transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
@@ -267,12 +277,14 @@
   align-items: center;
   gap: 10px;
   border-bottom: 1px solid rgba(106, 179, 150, 0.3); 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dropdown-item:last-child {
   border-bottom: none;
 }
-
 
 .dropdown-item:hover {
   background: linear-gradient(90deg, #5fa387, #6AB396);
@@ -281,31 +293,15 @@
   border-radius: 8px;
 }
 
-
 .dropdown-item:active {
   background: #4e8c76;
   transform: scale(0.98);
 }
 
-
 .dropdown-item.disabled {
   color: #999999;
   cursor: not-allowed;
   background: transparent;
-}
-
-.input-container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.7);
-  border-radius: 22px;
-  padding: 12px 16px;
-  cursor: pointer;
-  transition: box-shadow 0.3s ease, background 0.3s ease;
-  height: 50px;
-  border: 2px solid rgba(106, 179, 150, 0.6);
 }
 
 .input-container:hover {
@@ -329,18 +325,19 @@
   box-shadow: 0 0 6px rgba(106, 179, 150, 0.5);
 }
 
-
 .dropdown-role {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   color: #4e8c76;
-  padding: 10px 18px;
+  padding: 8px 18px;
   background: rgba(106, 179, 150, 0.2);
   text-transform: uppercase;
   letter-spacing: 0.8px;
   border-bottom: 2px solid rgba(106, 179, 150, 0.5);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -360,11 +357,46 @@
   position: relative;
 }
 
-
-
 .app-logo {
   width: 70px; 
   height: auto;
   transform: translateY(-5px); 
+}
 
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(106, 179, 150, 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(106, 179, 150, 0.5);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(106, 179, 150, 0.3) rgba(255, 255, 255, 0.05);
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  width: 100%;
+  overflow-y: auto;
+  max-height: calc(100vh - 300px);
+  padding-right: 10px;
+  scrollbar-gutter: stable;
 }

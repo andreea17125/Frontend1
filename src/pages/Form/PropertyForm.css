@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box; 
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove global body styling that could affect other pages */
+.property-form-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #a7d7c5; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  overflow: hidden;
+  padding: 20px;
+}
+
+.property-form {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 600px;
+  width: 100%; 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.form-title {
+  text-align: center;
+  color: #6ab396;
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+  font-size: 16px;
+}
+
+.form-group {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px; 
+}
+
+.form-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus {
+  border-color: #6ab396;
+  outline: none;
+  box-shadow: 0 0 8px rgba(106, 179, 150, 0.5);
+}
+
+.form-button {
+  width: 100%;
+  padding: 14px;
+  background-color: #6ab396;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.form-button:hover {
+  background-color: #5aa284;
+  transform: scale(1.02);
+}
+
+.form-button:active {
+  background-color: #4e8c73;
+  transform: scale(0.98);
+}
+
+.form-proptype {
+  margin-bottom: 10px; 
+}

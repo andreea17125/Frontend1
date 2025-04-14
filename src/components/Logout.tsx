@@ -1,21 +1,24 @@
-import React from 'react'
-import { useNavigate } from 'react-router';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import './Logout.css'; 
 
 const Logout = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear authentication tokens
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    
+    // Redirect to login page
+    navigate('/Login');
+  };
+
   return (
-    <button style={{top:"2em",right:"2em",position:"absolute"}} onClick={() => {
-      localStorage.removeItem('accessToken')
-      localStorage.removeItem('refreshToken')
-      navigate('/Login')
-    }
-}>
-     Logout
-
-
+    <button className="logout-button" onClick={handleLogout}>
+      Logout
     </button>
-  )
-}
+  );
+};
 
-
-export default Logout
+export default Logout;
