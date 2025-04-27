@@ -10,7 +10,6 @@ import { searchProperties, Property } from '../../services/propertyService';
 import L from 'leaflet';
 import PropertyForm from '../Form/PropertyForm';
 
-// Fix for Leaflet icon issue
 // @ts-ignore
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -38,9 +37,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ setSearchedLocation }) => {
   const map = useMap();
 
   React.useEffect(() => {
-    // @ts-ignore - Ignoring type errors for leaflet-geosearch
+    // @ts-ignore 
     const provider = new OpenStreetMapProvider();
-    // @ts-ignore - Ignoring type errors for leaflet-geosearch
+    // @ts-ignore 
     const searchControl = new GeoSearchControl({
       provider,
       style: 'bar',
@@ -84,9 +83,7 @@ const LeafletMap: React.FC = () => {
           return;
         }
         
-        // Convert properties to marker data format
         const markerData: MarkerData[] = properties.map(property => {
-          // Ensure latitude and longitude are valid numbers
           const lat = typeof property.latitude === 'number' ? property.latitude : 47.75;
           const lng = typeof property.longitude === 'number' ? property.longitude : 26.1;
           
@@ -99,7 +96,6 @@ const LeafletMap: React.FC = () => {
         
         setMarkers(markerData);
         
-        // If we have properties, center the map on the first one
         if (markerData.length > 0) {
           setMapCenter(markerData[0].position);
         }

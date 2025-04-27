@@ -8,10 +8,10 @@ import ResetPassword from "./pages/Auth/ResetPassword";
 import { CustomAuthProvider } from "./context/LoginContext";
 import Logout from "./components/Logout";
 import AdminImport from "./pages/AdminHome/AdminImport";
-import LeafletMap from "./pages/Map/map"; // Import the LeafletMap component
-import PropertyForm from './pages/Form/PropertyForm'; // Import the PropertyForm component
+import LeafletMap from "./pages/Map/map"; 
+import PropertyForm from './pages/Form/PropertyForm'; 
+import OneLocationMap from "./pages/SearchForm";
 
-// Create a wrapper component to conditionally render Logout
 const LogoutWrapper = () => {
   const location = useLocation();
   const isAuthPage = location.pathname === '/' || location.pathname === '/Login' || location.pathname.includes('/resetPassword');
@@ -25,6 +25,7 @@ function App() {
       <Router>
         <LogoutWrapper />
         <Routes>
+        <Route path="/Maps" element={<OneLocationMap/>} />
           <Route path="/" element={<Authentification />} />
           <Route path="/AdminHome" element={<AdminHome />} />
           <Route path="/AdminHome/UsersRequest" element={<UsersRequest />} />
@@ -37,6 +38,7 @@ function App() {
           <Route path="/PropertyForm" element={<PropertyForm />} /> 
         </Routes>
       </Router>
+
     </CustomAuthProvider>
   );
 }
