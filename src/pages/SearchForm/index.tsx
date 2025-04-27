@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
+import "./SearchForm.css"; // Link the updated CSS file
 
 export default function OneLocationMap() {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -27,32 +28,17 @@ export default function OneLocationMap() {
 
   const goToCoordinates = (parsedLat: number, parsedLng: number) => {
     if (!map.current) return;
-  
+
     map.current.flyTo({
       center: [parsedLng, parsedLat],
       zoom: 14,
       speed: 1.2,
     });
-  
-    setTimeout(() => {
-      map.current?.easeTo({
-        center: [parsedLng + 0.001, parsedLat + 0.001],
-        duration: 500,
-        easing: (t) => t, // mișcare constantă
-      });
-      setTimeout(() => {
-        map.current?.easeTo({
-          center: [parsedLng, parsedLat],
-          duration: 500,
-          easing: (t) => t,
-        });
-      }, 500);
-    }, 1200);
-  
+
     if (markerRef.current) {
       markerRef.current.remove();
     }
-  
+
     const popupHTML = `
       <div style="text-align: center;">
         ${city ? `<strong>${city}</strong><br/>` : ""}
@@ -61,15 +47,14 @@ export default function OneLocationMap() {
         <small>(${parsedLat.toFixed(4)}, ${parsedLng.toFixed(4)})</small>
       </div>
     `;
-  
+
     const newMarker = new maplibregl.Marker()
       .setLngLat([parsedLng, parsedLat])
       .setPopup(new maplibregl.Popup({ offset: 25 }).setHTML(popupHTML))
       .addTo(map.current);
-  
+
     markerRef.current = newMarker;
   };
-  
 
   const handleGoToLocation = async () => {
     const parsedLat = parseFloat(lat);
@@ -103,61 +88,67 @@ export default function OneLocationMap() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "20px", gap: "20px" }}>
-      {/* FORMULAR */}
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-        <input
-          type="text"
-          placeholder="Oraș (opțional)"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          style={{ padding: "10px", width: "200px" }}
-        />
-        <input
-          type="text"
-          placeholder="Stradă (opțional)"
-          value={street}
-          onChange={(e) => setStreet(e.target.value)}
-          style={{ padding: "10px", width: "200px" }}
-        />
-        <input
-          type="text"
-          placeholder="Număr (opțional)"
-          value={number}
-          onChange={(e) => setNumber(e.target.value)}
-          style={{ padding: "10px", width: "100px" }}
-        />
-        <input
-          type="text"
-          placeholder="Cod Poștal (opțional)"
-          value={postalCode}
-          onChange={(e) => setPostalCode(e.target.value)}
-          style={{ padding: "10px", width: "150px" }}
-        />
-        <input
-          type="text"
-          placeholder="Latitudine*"
-          value={lat}
-          onChange={(e) => setLat(e.target.value)}
-          style={{ padding: "10px", width: "150px" }}
-        />
-        <input
-          type="text"
-          placeholder="Longitudine*"
-          value={lng}
-          onChange={(e) => setLng(e.target.value)}
-          style={{ padding: "10px", width: "150px" }}
-        />
-        <button
-          onClick={handleGoToLocation}
-          style={{ backgroundColor: "#2ecc71", color: "white", padding: "10px 20px", borderRadius: "6px", border: "none", cursor: "pointer", height: "50px" }}
-        >
-          📍 Mergi la locație
-        </button>
+    <div className="page-container">
+      <div className="content-wrapper">
+        <div className="property-form">
+          <h2 className="form-title">Căutare Locație</h2>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Oraș (opțional)"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="form-input"
+            />
+            <input
+              type="text"
+              placeholder="Stradă (opțional)"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Număr (opțional)"
+              value={number}
+              onChange={(e) => setNumber(e.target.value)}
+              className="form-input"
+            />
+            <input
+              type="text"
+              placeholder="Cod Poștal (opțional)"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              placeholder="Latitudine*"
+              value={lat}
+              onChange={(e) => setLat(e.target.value)}
+              className="form-input"
+            />
+            <input
+              type="text"
+              placeholder="Longitudine*"
+              value={lng}
+              onChange={(e) => setLng(e.target.value)}
+              className="form-input"
+            />
+          </div>
+          <button
+            onClick={handleGoToLocation}
+            className="form-button"
+          >
+            📍 Mergi la locație
+          </button>
+        </div>
+        <div ref={mapContainer} className="map-container" />
       </div>
-
-      {/* HARTA */}
-      <div ref={mapContainer} style={{ width: "90%", height: "600px" }} />
     </div>
   );
 }
